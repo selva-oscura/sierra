@@ -1,0 +1,36 @@
+body{
+	width:478px;
+}
+.right{
+	float:right;
+}
+.clear{
+	clear:both;
+}
+table{
+	border-collapse: collapse;
+	text-align: left;
+}
+.wide_cell{
+	width:250px;
+}
+.med_cell{
+	width:150px;
+}
+.narrow_cell{
+	width:70px;
+}
+.zebra0{
+	background-color: #dddddd;
+	border:1px black;
+}
+.zebra1{
+	background-color: #bbbbbb;
+	/*border:1px solid black;*/
+}
+.red_button{
+	color:white;
+	background-color: red;
+	border:1px solid #000000;
+	box-shadow: 1px 1px 1px #000000;
+}
