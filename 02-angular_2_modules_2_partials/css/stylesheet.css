@@ -1,0 +1,103 @@
+* h1, h2, h3, h4, h5, h6, p, a, form, input, button, table, td, th{
+	margin:2px;
+	padding:2px;
+	border:0;
+}
+
+body{
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	color:blue;
+	width:900px;
+	margin:6px auto;
+}
+
+.left{
+	float:left;
+}
+
+.right{
+	float:right;
+}
+.clear{
+	clear:both;
+}
+
+.drop_12{
+	padding:12px 0px;
+}
+
+label{
+	width:200px;
+}
+
+table{
+	border-collapse: collapse;
+	text-align: left;
+}
+
+table th, table td{
+	padding:0px 12px;
+}
+
+a:link, a:visited {
+	color: #00B7FF;
+}
+
+a:active{
+	color:blue;
+}
+
+input, select{
+	color: blue;
+	border:1px solid #00B7FF;
+	width:150px;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    rgba(0,183,255,.5);
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    rgba(0,183,255,.5);
+    /*opacity:  1;*/
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    rgba(0,183,255,.5);
+    /*opacity:  1;*/
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    rgba(0,183,255,.5);
+}
+
+.wide_cell{
+	width:250px;
+}
+.med_cell{
+	width:160px;
+}
+.narrow_cell{
+	width:70px;
+}
+.text_right{
+	text-align: right;
+}
+.zebra0{
+	background-color: rgba(0,183,255,.1);
+	border:1px black;
+}
+.zebra1{
+	background-color: rgba(0,183,255,.25);
+	/*border:1px solid black;*/
+}
+.delete_button{
+	color:white;
+	background-color: red;
+	border:1px solid #000000;
+	box-shadow: 1px 1px 1px #000000;
+}
+
+.add_button{
+	color:white;
+	background-color: #00B7FF;
+	border:1px solid #000000;
+	box-shadow: 1px 1px 1px #000000;
+}
