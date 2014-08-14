@@ -1,0 +1,41 @@
+				<div class="container" ng-controller='orderController'>
+					<div class='drop_12'></div>
+					<h3>Place an order</h3>
+					<label>Customer</label>
+					<select ng-model = "new_order.customer_name" required>
+						<option ng-repeat="customer in customers | orderBy: 'name'" value="{{customer.name}}">{{customer.name}}</option>
+					</select>
+					<div class='clear'></clear>
+					<label>Product</label>
+					<select ng-model="new_order.product" required>
+						<option ng-repeat="product in products | orderBy: 'name'" value="{{product.name}}">{{product.name}}</option>
+					</select>
+					<div class='clear'></clear>
+					<label>Quantity</label>
+					<input type='number' ng-model="new_order.quantity" required min=1 step=1 />
+					<button class="button add_button" ng-click="addOrder()">Place Order</button> 
+					<div ng-model="new_order.message">{{ new_order.message }}</div>
+					<div class='clear'></div>
+					<div class='drop_12'></div>
+					<h3 class='left'>Current Orders</h3>
+					<input type='text' class='right' id='search' placeholder='search name...'  ng-model="filter_name" />
+					<div class='clear'></div>
+					<table id='table'>
+						<thead>
+							<tr class='zebra1' >
+								<th class='wide_cell'>Customer Name</th>
+								<th class='wide_cell'>Product</th>
+								<th class='narrow_cell text_right'>Quantity</th>
+								<th class='med_cell'>Date</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="order in orders | filter:filter_name | orderBy:'created':reverse=true" class='zebra{{ $index%2 }}'>
+								<td>{{order.customer_name}}</td>
+								<td>{{order.product}}</td>
+								<td class='text_right'>{{order.quantity}}</td>
+								<td>{{order.created}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
