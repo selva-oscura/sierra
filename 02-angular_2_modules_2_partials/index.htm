@@ -10,9 +10,11 @@
 	</head>
 	<body ng-controller="MenuCtrl">
 		<ul class='menu'>
+			<li ng-class="menuClass('')"><a href="#/">Home</a></li>
 			<li ng-class="menuClass('customers')"><a href="#/customers">Customers</a></li>
 			<li ng-class="menuClass('orders')"><a href="#/orders">Orders</a></li>
 		</ul>
+		<div class='clear'></div>
 		<div ng-view="views" ></div>
 	</body>
 </html>

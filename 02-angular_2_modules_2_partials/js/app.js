@@ -11,6 +11,11 @@ var sierraApp = angular.module('sierraApp', ['ngRoute']);
 		templateUrl: 'partials/orders.htm',
 		controller: 'orderController'
 	})
+	.when('/',
+	{
+		templateUrl: 'partials/index.htm'
+		// controller: 'orderController'
+	})
 	.otherwise({
 		redirectTo: '/'
 	});
@@ -86,7 +91,6 @@ sierraApp.controller('customerController', function($scope, customerFactory){
 	}
 });
 
-
 var orderList=angular.module('orderList', []);
 sierraApp.factory('orderFactory', function(){
 	var factory={};
@@ -95,6 +99,18 @@ sierraApp.factory('orderFactory', function(){
 		{customer_name:'John Supsupin', product:'something else', quantity:4, created:'2014-04-03'},
 		{customer_name:'Trey Villafane', product:'another thing', quantity:793, created:'2014-04-01'},
 		{customer_name:'India Meisner', product:'stuff', quantity:2, created:'2014-03-15'}
+	];
+	factory.products=[
+		{name:'Nike Shoes'},
+		{name:'Black Belts'},
+		{name:'Ice Cream'},
+		{name:'Candles'}
+	];
+	factory.customers=[
+		{name:'Michael Choi'},
+		{name:'John Supsupin'},
+		{name:'Trey Villafane'},
+		{name:'India Meisner'}
 	];
 	// factory.getCustomers=function(){
 	// 	return customers;
@@ -127,6 +143,8 @@ sierraApp.factory('orderFactory', function(){
 sierraApp.controller('orderController', function($scope, orderFactory){
 	// $scope.customers=customerFactory.getCustomers();
 	$scope.orders=orderFactory.orders;
+	$scope.customers=orderFactory.customers;
+	$scope.products=orderFactory.products;
 	$( document ).ready(function() {
 		var table_width=$('table').width();
 		$('#search')
@@ -139,16 +157,3 @@ sierraApp.controller('orderController', function($scope, orderFactory){
 		orderFactory.deleteOrder($index);
 	}
 });
-
-        // $(splash_container)
-        //   .css('margin-top', spacing.y)
-        //   .css('margin-left', spacing.x);
-
-
-// $( document ).ready(function() {
-// 	(console.log($( window ).width()));
-// 	(console.log($("container").width()));
-// 	(console.log($("table").width()));
-// 	// console.log($('table').width());
-// 	// console.log(table_width);
-// });
