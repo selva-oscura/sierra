@@ -15,8 +15,14 @@ var sierraApp = angular.module('sierraApp', ['ngRoute']);
 		redirectTo: '/'
 	});
 });
-// sierraApp.controller('NotSoSimpleController', function($scope) {
-// 		});
+
+sierraApp.controller('MenuCtrl', function($scope, $location){
+	$scope.menuClass = function(page){
+		var current = $location.path().substring(1);
+		return page=== current ? "active" : "";
+		alert(current);
+	};
+});
 
 var customerList=angular.module('customerList', []);
 sierraApp.factory('customerFactory', function(){
@@ -67,6 +73,11 @@ sierraApp.factory('customerFactory', function(){
 sierraApp.controller('customerController', function($scope, customerFactory){
 	// $scope.customers=customerFactory.getCustomers();
 	$scope.customers=customerFactory.customers;
+	$( document ).ready(function() {
+		var table_width=$('table').width();
+		$('#search')
+			.css('margin-right', (894-table_width));
+	});
 	$scope.addCustomer = function(){
 		customerFactory.createCustomer($scope.new_customer);
 	}
@@ -116,6 +127,11 @@ sierraApp.factory('orderFactory', function(){
 sierraApp.controller('orderController', function($scope, orderFactory){
 	// $scope.customers=customerFactory.getCustomers();
 	$scope.orders=orderFactory.orders;
+	$( document ).ready(function() {
+		var table_width=$('table').width();
+		$('#search')
+			.css('margin-right', (894-table_width));
+	});
 	$scope.addOrder = function(){
 		orderFactory.createOrder($scope.new_order);
 	}
@@ -123,3 +139,16 @@ sierraApp.controller('orderController', function($scope, orderFactory){
 		orderFactory.deleteOrder($index);
 	}
 });
+
+        // $(splash_container)
+        //   .css('margin-top', spacing.y)
+        //   .css('margin-left', spacing.x);
+
+
+// $( document ).ready(function() {
+// 	(console.log($( window ).width()));
+// 	(console.log($("container").width()));
+// 	(console.log($("table").width()));
+// 	// console.log($('table').width());
+// 	// console.log(table_width);
+// });

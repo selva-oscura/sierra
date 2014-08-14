@@ -1,4 +1,4 @@
-* h1, h2, h3, h4, h5, h6, p, a, form, input, button, table, td, th{
+* h1, h2, h3, h4, h5, h6, p, a, form, input, button, table, td, th, ul, li{
 	margin:2px;
 	padding:2px;
 	border:0;
@@ -27,7 +27,10 @@ body{
 }
 
 label{
-	width:200px;
+	width:110px;
+	margin-left: 12px;
+	display: inline-block;
+	text-align: right;
 }
 
 table{
@@ -39,18 +42,45 @@ table th, table td{
 	padding:0px 12px;
 }
 
-a:link, a:visited {
+.menu li{
+	list-style-type: none;
+	padding:0px 4px;
+	float:left;
 	color: #00B7FF;
 }
 
-a:active{
+.menu a{
+	color: #00B7FF;
+}
+
+.menu .active a{
 	color:blue;
+	border-top: 1px solid blue;
+	border-bottom: 1px solid blue;
+}
+
+.menu a{
+	text-decoration: none;
 }
 
 input, select{
 	color: blue;
 	border:1px solid #00B7FF;
-	width:150px;
+	margin-right:4px;
+}
+
+input{
+	width:140px;
+	margin-left:0px;
+}
+
+select{
+	width:145px;
+}
+
+#search{
+	margin-right:0;
+	padding-right:0;
 }
 
 ::-webkit-input-placeholder { /* WebKit browsers */

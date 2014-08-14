@@ -11,16 +11,17 @@
 					<select ng-model="new_order.product" required>
 						<option ng-repeat="order in orders | orderBy: 'product'" value="{{order.product}}">{{order.product}}</option>
 					</select>
+					<div class='clear'></clear>
 					<label>Quantity</label>
 					<input type='number' ng-model="new_order.quantity" required min=1 step=1 />
 					<button class="add_button" ng-click="addOrder()">Add</button> 
 					<div ng-model="new_order.message">{{ new_order.message }}</div>
 					<div class='clear'></div>
 					<div class='drop_12'></div>
-					<h3>Current Orders</h3>
-					<input type='text' class='right' name='search' placeholder='search name...'  ng-model="filter_name" />
+					<h3 class='left'>Current Orders</h3>
+					<input type='text' class='right' id='search' placeholder='search name...'  ng-model="filter_name" />
 					<div class='clear'></div>
-					<table>
+					<table id='table'>
 						<thead>
 							<tr class='zebra1' >
 								<th class='wide_cell'>Customer Name</th>
