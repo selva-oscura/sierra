@@ -75,6 +75,6 @@ sierraApp.controller('customerController', function($scope, customerFactory){
 	$( document ).ready(function() {
 		var table_width=$('table').width();
 		$('#search')
-			.css('margin-right', (894-table_width));
+			.css('margin-right', (890-table_width));
 	});
 });

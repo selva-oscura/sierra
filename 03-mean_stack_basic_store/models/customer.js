@@ -3,14 +3,14 @@ var mongoose = require('mongoose');
 // documents within the same collection to have the same key names!  Hooray organization!
 
 var validateEmail = function(email) {
-    var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+	var re = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/
     return re.test(email)
 };
 
 // Validations and validation messages
 var CustomerSchema = new mongoose.Schema({
-  name: { type: String, unique: true, trim: true, required: 'Customer Name is required', validate: [validateEmail, 'Please provide a valid email address'] },
-  email: { type: String, unique: true, trim: true, required: 'E-mail address is required'},
+  name: { type: String, unique: true, trim: true, required: 'Customer Name is required' },
+  email: { type: String, unique: true, trim: true, required: 'E-mail address is required', validate: [validateEmail, 'Please provide a valid email address'] },
   created: { type: Date, default: Date.now }
 });
 
