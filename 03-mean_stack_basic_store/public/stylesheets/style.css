@@ -16,6 +16,7 @@ body{
 	color:blue;
 	width:900px;
 	margin:6px auto;
+	overflow-y: scroll;
 }
 
 .left{
@@ -31,6 +32,18 @@ body{
 
 .drop_12{
 	padding:12px 0px;
+}
+
+.error{
+	color:red;
+	font-weight: bolder;
+	margin-left:18px;
+	padding-top:12px;
+	height:18px;
+}
+
+.ilb{
+	display: inline-block;
 }
 
 label{
@@ -49,9 +62,13 @@ table th, table td{
 	padding:0px 12px;
 }
 
+table tr{
+	height: 28px;
+}
+
 .menu li{
 	list-style-type: none;
-	padding:0px 8px 0px 0px;
+	padding:0px 16px 0px 0px;
 	float:left;
 	color: #00B7FF;
 }
@@ -84,32 +101,37 @@ input, select{
 }
 
 input{
-	width:140px;
+	width:200px;
 	margin-left:0px;
 }
 
 select{
-	width:145px;
+	width:205px;
 }
 
 #search{
+	width:250px;
 	margin-right:0;
 	padding-right:0;
 }
 
 ::-webkit-input-placeholder { /* WebKit browsers */
     color:    rgba(0,183,255,.5);
+    text-align: right;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
     color:    rgba(0,183,255,.5);
+    text-align: right;
     /*opacity:  1;*/
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
     color:    rgba(0,183,255,.5);
+    text-align: right;
     /*opacity:  1;*/
 }
 :-ms-input-placeholder { /* Internet Explorer 10+ */
     color:    rgba(0,183,255,.5);
+    text-align: right;
 }
 
 .wide_cell{

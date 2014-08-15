@@ -32,23 +32,34 @@ sierraApp.controller('MenuCtrl', function($scope, $location){
 var customerList=angular.module('customerList', []);
 sierraApp.factory('customerFactory', function(){
 	var factory={};
+	factory.new_customer={name:"", message:""};
 	factory.customers=[
 		{name:'Michael Choi', created:'2014-04-02T20:15:00.982Z'},
 		{name:'John Supsupin', created:'2014-04-03T20:15:33.982Z'},
 		{name:'India Meisner', created:'2014-03-15T20:14:33.982Z'},
 		{name:'Trey Villafane', created:'2014-04-01T20:02:33.982Z'}
 	];
+	// factory.new_customer.name="";
+	// factory.new_customer.message="";
 	// factory.getCustomers=function(){
 	// 	return customers;
 	// };
 	factory.createCustomer = function(info){
 		var err=0;
-		//check for duplicate entries for customer.name
-		for(x in factory.customers){
-			// console.log(customers[x].name, info.name);
-			if(factory.customers[x].name===info.name){
-				err=1;
-				console.log('err');
+		//check for empty entry
+		if(info.name===""){
+			info.message="Error! A name is required!";
+			err=1;
+		} 
+		else{
+			//check for duplicate entries for customer.name
+			for(x in factory.customers){
+				// console.log(customers[x].name, info.name);
+				if(factory.customers[x].name===info.name){
+					err=1;
+					console.log('err');
+					info.message='Error!  That customer is already in our records.';
+				}
 			}
 		}
 		//if no errors, create customer record
@@ -63,11 +74,6 @@ sierraApp.factory('customerFactory', function(){
 			info.name='';
 			info.message='';
 		}
-		//else (= presence of errors), send error message
-		else{
-			info.name='error';
-			info.message='Error!  That customer is already in our records.';
-		}
 	}
 	factory.deleteCustomer=function($index){
 		factory.customers.splice($index, 1);
@@ -78,18 +84,27 @@ sierraApp.factory('customerFactory', function(){
 sierraApp.controller('customerController', function($scope, customerFactory){
 	// $scope.customers=customerFactory.getCustomers();
 	$scope.customers=customerFactory.customers;
+	$scope.new_customer=customerFactory.new_customer;
 	$( document ).ready(function() {
 		var table_width=$('table').width();
 		$('#search')
 			.css('margin-right', (894-table_width));
 	});
 	$scope.addCustomer = function(){
-		customerFactory.createCustomer($scope.new_customer);
+		if($scope.new_customer){
+			customerFactory.createCustomer($scope.new_customer);
+		}
+		else{
+			$scope.new_customer.message="Customer name is required";
+		}
 	}
 	$scope.removeCustomer = function($index){
 		customerFactory.deleteCustomer($index);
 	}
 });
+
+
+
 
 var orderList=angular.module('orderList', []);
 sierraApp.factory('orderFactory', function(){
