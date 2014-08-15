@@ -9,10 +9,12 @@ var validateEmail = function(email) {
 
 // Validations and validation messages
 var CustomerSchema = new mongoose.Schema({
-  name: { type: String, unique: true, trim: true, required: 'Customer Name is required' },
-  email: { type: String, unique: true, trim: true, required: 'E-mail address is required', validate: [validateEmail, 'Please provide a valid email address']},
+  name: { type: String, unique: true, trim: true, required: 'Customer Name is required', validate: [validateEmail, 'Please provide a valid email address'] },
+  email: { type: String, unique: true, trim: true, required: 'E-mail address is required'},
   created: { type: Date, default: Date.now }
 });
+
+
 // Mongoose documentation (http://mongoosejs.com/docs/api.html#schematype_SchemaType-required) specifies that violating
 // the unique constraint returns an E11000 error from MongoDB when saving, not a Mongoose validation error
 

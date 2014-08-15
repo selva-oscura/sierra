@@ -1,15 +1,19 @@
 				<div class="container" ng-controller='customerController'>
 					<div class='drop_12'></div>
 					<h3>Add a new customer</h3>
-					<label>Customer Name</label>
-					<input type='text' required ng-model="new_customer.name" />
-					<div class='clear'></div>
-					<label>E-mail Address</label>
-					<input type='text' required ng-model="new_customer.email" />
-					<button class='button add_button' ng-click="addCustomer()">Add</button>
-					<div class='ilb error'>
-						<p ng-repeat="error in errors">{{ error }}</p>
-					</div>
+					<div class="half">
+						<label>Customer Name</label>
+						<input type='text' required ng-model="new_customer.name" />
+						<div class='clear'></div>
+						<label>E-mail Address</label>
+						<input type='text' required ng-model="new_customer.email" />
+						<button class='button add_button' ng-click="addCustomer()">Add</button>
+					</div><!--end of div half-->
+					<div class="half">
+						<div class='ilb error'>
+							<p ng-repeat="error in errors | orderBy:'toString()'">{{ error }}</p>
+						</div>
+					</div><!--end of div half-->
 					<div class='clear'></div>
 					<div class='drop_12'></div>
 					<h3 class='left'>Customer List</h3>

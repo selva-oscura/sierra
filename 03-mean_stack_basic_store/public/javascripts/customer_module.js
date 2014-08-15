@@ -14,6 +14,7 @@ sierraApp.factory('customerFactory', function($http){
 	}
 	factory.createCustomer=function(customer){
 		factory.errors=[];
+		message="";
 		$http.post('/api/customers', customer).success(function(data){
 			customers.push(data);
 			factory.errors=[];

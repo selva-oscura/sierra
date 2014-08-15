@@ -50,6 +50,7 @@ sierraApp.factory('orderFactory', function($http){
 	}
 	factory.createOrder = function(order){
 		factory.errors=[];
+		message="";
 		$http.post('/api/orders', order).success(function(data){
 			orders.push(data);
 			order.customer_name='';

@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 
 // Validations and validation messages
 var ProductSchema = new mongoose.Schema({
-  name: { type: String, unique:true, trim:true, required: 'Customer Name is required' },
+  name: { type: String, unique:true, trim:true, required: 'Product Name is required.' },
   created: { type: Date, default: Date.now }
 });
 // Mongoose documentation (http://mongoosejs.com/docs/api.html#schematype_SchemaType-required) specifies that violating

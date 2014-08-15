@@ -20,6 +20,7 @@ sierraApp.factory('productFactory', function($http){
 // ];
 	factory.createProduct = function(product){
 		factory.errors=[];
+		message="";
 		$http.post('/api/products', product).success(function(data){
 			products.push(data);
 			factory.errors=[];

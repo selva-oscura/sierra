@@ -5,14 +5,11 @@ var mongoose = require('mongoose');
 // Validations and validation messages
 var OrderSchema = new mongoose.Schema({
   customer_name: { type: String, trim:true, required: 'Customer Name is required' },
-  product_name: { type: String, trim:true, required: 'Product Name is required' },
-  quantity: { type: Number, min:1, required: 'Order Quantity is required' },
+  product_name: { type: String, trim:true, required: 'Product Name is required.' },
+  quantity: { type: Number, min:1, required: 'Quantity is required.' },
   created: { type: Date, default: Date.now }
 });
 
-OrderSchema.path('customer_name').required(true, 'Customer Name is required.');
-OrderSchema.path('product_name').required(true, 'Product Name is required.');
-OrderSchema.path('quantity').required(true, 'Order Quantity is required.');
 // Mongoose documentsion (http://mongoosejs.com/docs/api.html#schematype_SchemaType-required) specifies that violating
 // the unique constraint returns an E11000 error from MongoDB when saving, not a Mongoose validation error
 

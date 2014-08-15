@@ -30,6 +30,11 @@ body{
 	clear:both;
 }
 
+.half{
+	width:450px;
+	float:left;
+}
+
 .drop_12{
 	padding:12px 0px;
 }
@@ -37,8 +42,6 @@ body{
 .error{
 	color:red;
 	font-weight: bolder;
-	margin-left:18px;
-	padding-top:12px;
 	height:18px;
 }
 

@@ -1,24 +1,28 @@
 				<div class="container" ng-controller='orderController'>
 					<div class='drop_12'></div>
 					<h3>Place an order</h3>
-					<label>Customer</label>
-					<select ng-model = "new_order.customer_name" required>
-						<option value="">Please Select a Customer</option>
-						<option ng-repeat="customer in customers | orderBy: 'name'" value="{{customer.name}}">{{customer.name}}</option>
-					</select>
-					<div class='clear'></div>
-					<label>Product</label>
-					<select ng-model="new_order.product_name" required>
-						<option value="">Please Select a Product</option>
-						<option ng-repeat="product in products | orderBy: 'name'" value="{{product.name}}">{{product.name}}</option>
-					</select>
-					<div class='clear'></div>
-					<label>Quantity</label>
-					<input type='number' ng-model="new_order.quantity" required min=1 step=1 />
-					<button class="button add_button" ng-click="addOrder()">Place Order</button>
-					<div class='ilb error'>
-						<p ng-repeat="error in errors">{{ error }}</p>
-					</div>
+					<div class="half">
+						<label>Customer</label>
+						<select ng-model = "new_order.customer_name" required>
+							<option value="">Please Select a Customer</option>
+							<option ng-repeat="customer in customers | orderBy: 'name'" value="{{customer.name}}">{{customer.name}}</option>
+						</select>
+						<div class='clear'></div>
+						<label>Product</label>
+						<select ng-model="new_order.product_name" required>
+							<option value="">Please Select a Product</option>
+							<option ng-repeat="product in products | orderBy: 'name'" value="{{product.name}}">{{product.name}}</option>
+						</select>
+						<div class='clear'></div>
+						<label>Quantity</label>
+						<input type='number' ng-model="new_order.quantity" required min=1 step=1 />
+						<button class="button add_button" ng-click="addOrder()">Place Order</button>
+					</div><!--end of div half-->
+					<div class="half">
+						<div class='ilb error'>
+							<p ng-repeat="error in errors | orderBy:'toString()'">{{ error }}</p>
+						</div>
+					</div><!--end of div half-->
 					<div class='clear'></div>
 					<div class='drop_12'></div>
 					<h3 class='left'>Current Orders</h3>
