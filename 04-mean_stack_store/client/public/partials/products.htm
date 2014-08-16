@@ -1,0 +1,35 @@
+				<div class="container" ng-controller='productController'>
+					<div class='drop_12'></div>
+					<h3>Add a new product</h3>
+					<div class="half">
+						<label>Product Name</label>
+						<input type='text' required ng-model="new_product.name" ngEnter="addProduct()" />
+						<button class='button add_button' ng-click="addProduct()">Add</button> 
+					</div><!--end of div half-->
+					<div class="half">
+						<div class='ilb error'>
+							<p ng-repeat="error in errors | orderBy:'toString()'">{{ error }}</p>
+						</div>
+					</div><!--end of div half-->
+					<div class='clear'></div>
+					<div class='drop_12'></div>
+					<h3 class='left'>Product List</h3>
+					<input type='text' class='right' id='search' placeholder='search by product name...'  ng-model="filter_name" />
+					<div class='clear'></div>
+					<table id='table'>
+						<thead>
+							<tr class='zebra1' >
+								<th class='wide_cell'>Product Name</th>
+								<th class='med_cell'>Created Date</th>
+								<th class='narrow_cell'>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="product in products | filter:filter_name | orderBy:'name'" class='zebra{{ $index%2 }}'>
+								<td>{{product.name}}</td>
+								<td>{{product.created | date:'yyyy-MM-dd'}}</td>
+								<td><button class='button delete_button' ng-click="removeProduct(product._id)">Remove</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>

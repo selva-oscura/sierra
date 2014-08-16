@@ -1,0 +1,26 @@
+<!doctype html>
+<html ng-app='sierraApp'>
+	<head>
+		<meta charset="UTF-8">
+		<title><%= title %></title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
+    	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular-route.min.js"></script>
+<!--     	// <script src="client/controllers/appController.js"></script> -->
+    	<script src="./javascripts/app_module.js"></script>
+    	<script src="./javascripts/customer_module.js"></script>
+    	<script src="./javascripts/order_module.js"></script>
+		<script src="./javascripts/product_module.js"></script>
+		<link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
+	</head>
+	<body ng-controller="MenuCtrl">
+		<ul class='menu'>
+			<li ng-class="menuClass('')"><a href="#/">Home</a></li>
+			<li ng-class="menuClass('customers')"><a href="#/customers">Customers</a></li>
+			<li ng-class="menuClass('products')"><a href="#/products">Products</a></li>
+			<li ng-class="menuClass('orders')"><a href="#/orders">Orders</a></li>
+		</ul>
+		<div class='clear'></div>
+		<div ng-view="views" ></div>
+	</body>
+</html>
