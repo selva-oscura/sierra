@@ -10,6 +10,12 @@
 	border:0;
 }
 
+/*html{
+	background: url('/images/parchment.jpg');
+	background-size: 2000px 1200px;
+	overflow: hidden;
+}
+*/
 body{
 	padding: 50px;
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -34,6 +40,14 @@ body{
 .half{
 	width:450px;
 	float:left;
+}
+
+.quarter{
+	width:225px;
+}
+
+.three-quarter{
+	width: 675px;
 }
 
 .drop_12{
@@ -115,12 +129,34 @@ select{
 	width:205px;
 }
 
+textarea{
+	width:200px;
+	color: blue;
+	border:1px solid #00B7FF;
+	margin-right:4px;
+}
+
 #search{
 	width:250px;
 	margin-right:0;
 	padding-right:0;
 }
 
+.card{
+	width:150px;
+	margin:20px 10px 0px 10px;
+	float:left;
+}
+
+.card img{
+	width:130px;
+	height: 130px;
+	margin:10px;
+}
+
+.card p{
+	text-align: center;
+}
 ::-webkit-input-placeholder { /* WebKit browsers */
     color:    rgba(0,183,255,.5);
     text-align: right;

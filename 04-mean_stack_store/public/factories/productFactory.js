@@ -24,6 +24,9 @@ sierraApp.factory('productFactory', function($http){
 			products.push(data);
 			factory.errors=[];
 			product.name="";
+			product.description="";
+			product.quantity="";
+			product.img_url="";
 		}).error(function(data){
 			// creating error messages for duplicate entry
 			if(data.code&&(data.code===11000||data.code===11001)){

@@ -1,35 +1,37 @@
 				<div class="container" ng-controller='productController'>
 					<div class='drop_12'></div>
-					<h3>Add a new product</h3>
-					<div class="half">
+					<div class="quarter left">
+						<h3>Search products</h3>
+						<input type='text' placeholder='search by product name...'  ng-model="filter_name" />
+						<div class='drop_12 clear'></div>
+						<h3>Add a new product</h3>
 						<label>Product Name</label>
-						<input type='text' required ng-model="new_product.name" ngEnter="addProduct()" />
+						<input type='text' required ng-model="new_product.name" />
+						<label>Image URL</label>
+						<input type='text' required ng-model="new_product.img_url" />
+						<label>Description</label>
+						<textarea rows="5" required ng-model="new_product.description"></textarea>
+						<label>Quantity</label>
+						<input type="number" required ng-model="new_product.quantity">
 						<button class='button add_button' ng-click="addProduct()">Add</button> 
-					</div><!--end of div half-->
-					<div class="half">
 						<div class='ilb error'>
 							<p ng-repeat="error in errors | orderBy:'toString()'">{{ error }}</p>
 						</div>
-					</div><!--end of div half-->
-					<div class='clear'></div>
-					<div class='drop_12'></div>
-					<h3 class='left'>Product List</h3>
-					<input type='text' class='right' id='search' placeholder='search by product name...'  ng-model="filter_name" />
-					<div class='clear'></div>
-					<table id='table'>
-						<thead>
-							<tr class='zebra1' >
-								<th class='wide_cell'>Product Name</th>
-								<th class='med_cell'>Created Date</th>
-								<th class='narrow_cell'>Actions</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr ng-repeat="product in products | filter:filter_name | orderBy:'name'" class='zebra{{ $index%2 }}'>
-								<td>{{product.name}}</td>
-								<td>{{product.created | date:'yyyy-MM-dd'}}</td>
-								<td><button class='button delete_button' ng-click="removeProduct(product._id)">Remove</button></td>
-							</tr>
-						</tbody>
-					</table>
+					</div><!--end of div quarter-->
+					<div class="three-quarter left">
+						<h3 class='left'>Product List</h3>
+						<div class='clear'></div>
+								<div class="card" ng-repeat="product in products | filter:filter_name | orderBy:'name'" >
+									<img src="./images/{{product.img_url}}" />
+									<p>{{product.name}}<br />
+									({{product.quantity}} left)</p>
+								</div>
+					</div><!--end of div three-quarter left-->
 				</div>
+<!-- 
+name: { type: String, unique:true, trim:true, required: 'Product Name is required.' },
+description: {type: String, trim:true, required: 'Product Description is required.'}
+img_url: {type: String, trim:true, required: 'URL for image is required.'}
+quantity: {type: Number, required: 'Quantity of this product is required.'}
+created: { type: Date, default: Date.now }
+ -->
