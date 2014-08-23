@@ -134,6 +134,7 @@ textarea{
 	color: blue;
 	border:1px solid #00B7FF;
 	margin-right:4px;
+	resize:none;
 }
 
 #search{
@@ -143,19 +144,20 @@ textarea{
 }
 
 .card{
-	width:150px;
-	margin:20px 10px 0px 10px;
+	width:130px;
+	margin:10px 0px 0px 5px;
 	float:left;
 }
 
 .card img{
-	width:130px;
-	height: 130px;
-	margin:10px;
+	width:120px;
+	height: 120px;
+	margin:5px 5px 0px 5px;
 }
 
 .card p{
 	text-align: center;
+	margin-top:0px;
 }
 ::-webkit-input-placeholder { /* WebKit browsers */
     color:    rgba(0,183,255,.5);
