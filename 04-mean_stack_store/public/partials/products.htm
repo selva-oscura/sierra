@@ -2,7 +2,7 @@
 					<div class='drop_12'></div>
 					<div class="quarter left">
 						<h3>Search products</h3>
-						<input type='text' placeholder='search by product name...'  ng-model="filter_name" />
+						<input type='text' placeholder='search by product name...' ng-model="searchText" />
 						<div class='drop_12 clear'></div>
 						<h3>Add a new product</h3>
 						<label>Product Name</label>
@@ -21,11 +21,11 @@
 					<div class="three-quarter left">
 						<h3 class='left'>Product List</h3>
 						<div class='clear'></div>
-								<div class="card" ng-repeat="product in products | filter:filter_name | orderBy:'name'" >
-									<img src="./images/{{product.img_url}}" />
-									<p>{{product.name}}<br />
-									({{product.quantity}} left)</p>
-								</div>
+						<div class="card" ng-repeat="product in products | filter:searchText | orderBy:'name'" >
+							<img src="./images/{{product.img_url}}" />
+							<p>{{product.name}}<br />
+							({{product.quantity}} left)</p>
+						</div>
 					</div><!--end of div three-quarter left-->
 				</div>
 <!-- 

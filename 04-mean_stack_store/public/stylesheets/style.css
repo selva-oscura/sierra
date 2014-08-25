@@ -4,7 +4,7 @@
 	border:0;
 }
 
-* ul, li{
+.menu, .menu li{
 	margin:0;
 	padding:0;
 	border:0;
@@ -31,6 +31,10 @@ body{
 
 .right{
 	float:right;
+}
+
+.text_center{
+	text-align: center;
 }
 
 .clear{
@@ -93,7 +97,7 @@ table tr{
 	color: #00B7FF;
 }
 
-.menu a{
+a{
 	color: #00B7FF;
 }
 

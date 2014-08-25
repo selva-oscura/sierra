@@ -42,6 +42,32 @@ sierraApp.factory('orderFactory', function($http){
 	factory.getOrders=function(callback){
 		$http.get('/api/orders').success(function(data){
 			orders=data;
+			for(i in orders){
+				var now = new Date();
+				var elapsed = "";
+				var days=Math.floor(now-orders[i].created)/1000*60*60*24;
+			// 	// if(now.getFullYear()===orders[i].created.getFullYear()&&now.getMonth()===orders[i].created.getMonth()&&now.getDate===orders[i].created.getDate()){
+			// 	// 	var hours=Math.floor(now-orders[i].created/1000*60*60);
+			// 	// 	if(hours===0){
+			// 	// 		elapsed="in the last hour";						
+			// 	// 	}else if(hours===1){
+			// 	// 		elapsed="1 hour ago";
+			// 	// 	}else{
+			// 	// 		elapsed=hours+" hours ago";
+			// 	// 	}
+			// 	// }else{
+			// 	// 	var days=Math.ceil(now-orders[i].created/1000*60*60*24);
+			// 	// 	if(days===1){
+			// 	// 		elapsed="yesterday";
+			// 	// 	}else if(days<7){
+			// 	// 		elapsed=days+" days ago";
+			// 	// 	}else if(days<14){
+			// 	// 		elapsed="1 week ago"
+			// 	// 	}
+				console.log(now, orders[i].created);
+				orders[i].elapsed=elapsed;
+			// 	}
+			}
 			callback(orders);
 		}).error(function(data){
 			console.log('getOrders error', data);

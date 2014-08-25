@@ -11,12 +11,6 @@ sierraApp.factory('productFactory', function($http){
 			console.log('getProducts error', data);
 		});
 	}
-// factory.products=[
-// 	{name:'Nike Shoes', created:'2014-09-02T20:15:00.982Z'},
-// 	{name:'Black Belts', created:'2014-05-02T20:15:00.982Z'},
-// 	{name:'Ice Cream', created:'2014-08-02T20:15:00.982Z'},
-// 	{name:'Candles', created:'2014-03-02T20:15:00.982Z'}
-// ];
 	factory.createProduct = function(product){
 		factory.errors=[];
 		message="";

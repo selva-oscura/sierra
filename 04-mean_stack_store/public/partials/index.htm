@@ -1,4 +1,44 @@
 				<div class="container">
 					<div class='drop_12'></div>
-					<h1 id='welcome'>Welcome to Sierra</h1>
-				</div>
+					<div ng-controller='productController'>
+						<div class="quarter left">
+							<h3>Search products</h3>
+							<input type='text' placeholder='search by product name...' ng-model="searchText" />
+							<div class='drop_12 clear'></div>
+						</div><!--end of div quarter-->
+						<div class="three-quarter right">
+							<h3>Product List (most recent additions)</h3>
+							<div class="card" ng-repeat="product in products | filter:searchText | orderBy:'created':reverse=true | limitTo: 5" >
+								<img src="./images/{{product.img_url}}" />
+								<p>{{product.name}}<br />
+								({{product.quantity}} left)</p>
+							</div>
+							<div class='clear'></div>
+							<p class='text_center'><a href="#/products">view more products</a></p>
+						</div><!--end of div three-quarter left-->
+					</div><!-- end of div ng-controller productController-->
+					<div ng-controller='orderController'>
+						<div class="three-quarter right">
+							<div class='drop_12'></div>
+							<h3>Recent Orders</h3>
+							<ul>
+								<li ng-repeat="order in orders | orderBy:'created':reverse=true" >
+									{{order.customer_name}} purchased {{order.quantity}} {{order.product_name}} ({{order.created | date:'yyyy-MM-dd'}}, {{order.elapsed}})
+								</li>
+							</ul>
+							<p class='text_center'><a href="#/orders">view all orders</a></p>
+						</div><!--end of div three-quarter left-->
+					</div><!-- end of div ng-controller orderController-->
+					<div ng-controller='customerController'>
+						<div class="three-quarter right">
+							<div class='drop_12'></div>
+							<h3>New Customers</h3>
+							<ul>
+								<li ng-repeat="customer in customers | orderBy:'created':reverse=true" >
+									{{customer.name}} joined the store ({{customer.created | date:'yyyy-MM-dd'}})
+								</li>
+							</ul>
+							<p class='text_center'><a href="#/customers">view all customers</a></p>
+						</div><!--end of div three-quarter left-->
+					</div><!-- end of div ng-controller customerController-->
+				</div><!-- end of div container-->
