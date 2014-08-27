@@ -6,6 +6,47 @@ sierraApp.factory('customerFactory', function($http){
 	factory.getCustomers=function(callback){
 		$http.get('/api/customers').success(function(data){
 			customers=data;
+			for(i in customers){
+				var elapsed = "";
+				var now = new Date();
+				var then = new Date(customers[i].created)
+				var today_start = new Date((now.getMonth()+1)+" "+now.getDate()+" "+now.getFullYear());
+				if(then>today_start){
+					console.log('today');
+					var hours=((now-then)/(1000*60*60));
+					if(hours<1){
+						elapsed = "in the last hour";
+					}else{
+						elapsed="in the last "+Math.ceil(hours)+" hours";
+					}
+				}else{
+					var total_days=((today_start-then)/(1000*60*60*24));
+					if(total_days<1){
+						elapsed="yesterday";
+					}else{
+						total_days=Math.ceil(total_days);
+						var weeks=Math.floor(total_days/7);
+						var days=total_days%7;
+						if(weeks===1){
+							elapsed=weeks+" week";
+						}else if(weeks>1){
+							elapsed=weeks+" weeks";
+						}
+						if(weeks>0&&days>0){
+							elapsed+=", ";
+						}
+						if(days===1){
+							elapsed+=days+" day";
+						}
+						else if(days>1){
+							elapsed+=days+" days";
+						}
+						elapsed+=" ago";
+					}
+				}
+				customers[i].elapsed=elapsed;
+			}
+
 			callback(customers);
 		}).error(function(data){
 			console.log('getCustomers error:', data);

@@ -43,30 +43,44 @@ sierraApp.factory('orderFactory', function($http){
 		$http.get('/api/orders').success(function(data){
 			orders=data;
 			for(i in orders){
-				var now = new Date();
 				var elapsed = "";
-				var days=Math.floor(now-orders[i].created)/1000*60*60*24;
-			// 	// if(now.getFullYear()===orders[i].created.getFullYear()&&now.getMonth()===orders[i].created.getMonth()&&now.getDate===orders[i].created.getDate()){
-			// 	// 	var hours=Math.floor(now-orders[i].created/1000*60*60);
-			// 	// 	if(hours===0){
-			// 	// 		elapsed="in the last hour";						
-			// 	// 	}else if(hours===1){
-			// 	// 		elapsed="1 hour ago";
-			// 	// 	}else{
-			// 	// 		elapsed=hours+" hours ago";
-			// 	// 	}
-			// 	// }else{
-			// 	// 	var days=Math.ceil(now-orders[i].created/1000*60*60*24);
-			// 	// 	if(days===1){
-			// 	// 		elapsed="yesterday";
-			// 	// 	}else if(days<7){
-			// 	// 		elapsed=days+" days ago";
-			// 	// 	}else if(days<14){
-			// 	// 		elapsed="1 week ago"
-			// 	// 	}
-				console.log(now, orders[i].created);
+				var now = new Date();
+				var then = new Date(orders[i].created)
+				var today_start = new Date((now.getMonth()+1)+" "+now.getDate()+" "+now.getFullYear());
+				if(then>today_start){
+					console.log('today');
+					var hours=((now-then)/(1000*60*60));
+					if(hours<1){
+						elapsed = "in the last hour";
+					}else{
+						elapsed="in the last "+Math.ceil(hours)+" hours";
+					}
+				}else{
+					var total_days=((today_start-then)/(1000*60*60*24));
+					if(total_days<1){
+						elapsed="yesterday";
+					}else{
+						total_days=Math.ceil(total_days);
+						var weeks=Math.floor(total_days/7);
+						var days=total_days%7;
+						if(weeks===1){
+							elapsed=weeks+" week";
+						}else if(weeks>1){
+							elapsed=weeks+" weeks";
+						}
+						if(weeks>0&&days>0){
+							elapsed+=", ";
+						}
+						if(days===1){
+							elapsed+=days+" day";
+						}
+						else if(days>1){
+							elapsed+=days+" days";
+						}
+						elapsed+=" ago";
+					}
+				}
 				orders[i].elapsed=elapsed;
-			// 	}
 			}
 			callback(orders);
 		}).error(function(data){

@@ -23,7 +23,7 @@
 							<h3>Recent Orders</h3>
 							<ul>
 								<li ng-repeat="order in orders | orderBy:'created':reverse=true" >
-									{{order.customer_name}} purchased {{order.quantity}} {{order.product_name}} ({{order.created | date:'yyyy-MM-dd'}}, {{order.elapsed}})
+									{{order.customer_name}} purchased {{order.quantity}} {{order.product_name}} ({{order.elapsed}})
 								</li>
 							</ul>
 							<p class='text_center'><a href="#/orders">view all orders</a></p>
@@ -35,7 +35,7 @@
 							<h3>New Customers</h3>
 							<ul>
 								<li ng-repeat="customer in customers | orderBy:'created':reverse=true" >
-									{{customer.name}} joined the store ({{customer.created | date:'yyyy-MM-dd'}})
+									{{customer.name}} joined the store ({{customer.created | date:'yyyy-MM-dd'}} - {{customer.elapsed}})
 								</li>
 							</ul>
 							<p class='text_center'><a href="#/customers">view all customers</a></p>
