@@ -17,7 +17,7 @@
 					<div class='clear'></div>
 					<div class='drop_12'></div>
 					<h3 class='left'>Customer List</h3>
-					<input type='text' class='right' id='search' placeholder='search by customer name...'  ng-model="searchText" />
+					<input type='text' class='right' id='search' placeholder='search by customer name...' ng-model="searchText" />
 					<div class='clear'></div>
 					<table id='table'>
 						<thead>
@@ -38,3 +38,7 @@
 						</tbody>
 					</table>
 				</div>
+
+
+
+<!-- 							<tr ng-repeat="customer in customers | filter:searchText | orderBy:'created':reverse=true" class='zebra{{ $index%2 }}'> -->

@@ -9,13 +9,13 @@
 						</select>
 						<div class='clear'></div>
 						<label>Product</label>
-						<select ng-model="new_order.product_name" required>
+						<select ng-model="new_order.product_name" ng-change="selectProduct()"required>
 							<option value="">Please Select a Product</option>
-							<option ng-repeat="product in products | orderBy: 'name'" value="{{product.name}}">{{product.name}}</option>
+							<option ng-repeat="product in products | orderBy: 'name'" value="{{product.name}}">{{product.name}} ({{product.quantity}} available)</option>
 						</select>
 						<div class='clear'></div>
 						<label>Quantity</label>
-						<input type='number' ng-model="new_order.quantity" required min=1 step=1 />
+						<input type='number' id='qty' ng-disabled="!new_order.product_name" ng-model="new_order.quantity" required min=1 max step=1 />
 						<button class="button add_button" ng-click="addOrder()">Place Order</button>
 					</div><!--end of div half-->
 					<div class="half">
@@ -44,7 +44,7 @@
 								<td>{{order.product_name}}</td>
 								<td class='text_right'>{{order.quantity}}</td>
 								<td>{{order.created | date:'yyyy-MM-dd'}}</td>
-								<td><button class='button delete_button' ng-click="removeOrder(order._id)">Remove</button></td>
+								<td><button class='button delete_button' ng-click="removeOrder(order._id)">Cancel</button></td>
 							</tr>
 						</tbody>
 					</table>

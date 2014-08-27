@@ -68,6 +68,14 @@ sierraApp.factory('orderFactory', function($http){
 			console.log('getOrders error', data);
 		});
 	}
+	factory.updateMaxQty = function(product_name, callback){
+		for(i in products){
+			if(products[i].name===product_name){
+				var maxQty=products[i].quantity;
+			}
+		}
+		callback(maxQty);
+	}
 	factory.createOrder = function(order){
 		factory.errors=[];
 		message="";

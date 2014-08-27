@@ -14,6 +14,16 @@ sierraApp.controller('orderController', function($scope, orderFactory){
 		$scope.orders=data;
 	});
 	$scope.errors=orderFactory.errors;
+	$scope.setQty=function(){
+
+	}
+	$scope.selectProduct = function() {
+		// $scope.new_order.quantity="";
+		$scope.maxQty=orderFactory.updateMaxQty($scope.new_order.product_name, function(data){
+			$scope.maxQty=data;
+			$('#qty').attr("max",$scope.maxQty);
+		});
+	};
 	$scope.addOrder = function(){
 		orderFactory.createOrder($scope.new_order);
 		$scope.errors=orderFactory.errors;
