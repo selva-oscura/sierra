@@ -5,24 +5,6 @@ sierraApp.factory('orderFactory', function($http){
 	var orders=[];
 	var message;
 	factory.errors=[];
-	// factory.orders=[
-	// 	{customer_name:'Michael Choi', product:'something', quantity:1, created:'2014-04-03'},
-	// 	{customer_name:'John Supsupin', product:'something else', quantity:4, created:'2014-04-03'},
-	// 	{customer_name:'Trey Villafane', product:'another thing', quantity:793, created:'2014-04-01'},
-	// 	{customer_name:'India Meisner', product:'stuff', quantity:2, created:'2014-03-15'}
-	// ];
-	// factory.products=[
-	// 	{name:'Nike Shoes'},
-	// 	{name:'Black Belts'},
-	// 	{name:'Ice Cream'},
-	// 	{name:'Candles'}
-	// ];
-	// factory.customers=[
-	// 	{name:'Michael Choi'},
-	// 	{name:'John Supsupin'},
-	// 	{name:'Trey Villafane'},
-	// 	{name:'India Meisner'}
-	// ];
 	factory.getCustomers=function(callback){
 		$http.get('/api/customers').success(function(data){
 			customers=data;
@@ -48,7 +30,6 @@ sierraApp.factory('orderFactory', function($http){
 				var then = new Date(orders[i].created)
 				var today_start = new Date((now.getMonth()+1)+" "+now.getDate()+" "+now.getFullYear());
 				if(then>today_start){
-					console.log('today');
 					var hours=((now-then)/(1000*60*60));
 					if(hours<1){
 						elapsed = "in the last hour";

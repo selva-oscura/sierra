@@ -31,3 +31,19 @@ sierraApp.controller('MenuCtrl', function($scope, $location){
 		alert(current);
 	};
 });
+
+sierraApp.filter('lastXDays', function(){
+	return function(records, x){
+		var filtered_records=[];
+		for(i in records){		
+			var now = new Date();
+			var today_start = new Date((now.getMonth()+1)+" "+now.getDate()+" "+now.getFullYear());
+			var then = new Date(records[i].created);
+			var total_days=((today_start-then)/(1000*60*60*24));
+			if(total_days<=x){
+				filtered_records.push(records[i]);
+			}
+		}
+		return filtered_records;
+	}
+});

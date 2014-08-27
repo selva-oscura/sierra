@@ -98,13 +98,22 @@ table tr{
 }
 
 a{
-	color: #00B7FF;
+	color: rgba(0,183,255,1);
 }
 
+a:hover{
+	color: rgba(0,183,255,.75);
+}
+
+
 .menu .active a{
-	color:blue;
+	color: rgba(0,0,255,1);
 	border-top: 1px solid blue;
 	border-bottom: 1px solid blue;
+}
+
+.menu .active a:hover{
+	color: rgba(0,0,255,.75);
 }
 
 .menu a{
@@ -200,7 +209,6 @@ textarea{
 }
 .zebra1{
 	background-color: rgba(0,183,255,.25);
-	/*border:1px solid black;*/
 }
 
 .button{
@@ -211,9 +219,17 @@ textarea{
 }
 
 .delete_button{
-	background-color: red;
+	background-color: rgba(255,0,0,1);
+}
+
+.delete_button:hover{
+	background-color: rgba(255,0,0,.75);
 }
 
 .add_button{
-	background-color: #00B7FF;
+	background-color: rgba(0,183,255,1);
+}
+
+.add_button:hover{
+	background-color: rgba(0,183,255,.75);
 }

@@ -22,7 +22,7 @@
 							<div class='drop_12'></div>
 							<h3>Recent Orders</h3>
 							<ul>
-								<li ng-repeat="order in orders | orderBy:'created':reverse=true" >
+								<li ng-repeat="order in filtered = (orders | lastXDays:30) | orderBy:'created':reverse=true" >
 									{{order.customer_name}} purchased {{order.quantity}} {{order.product_name}} ({{order.elapsed}})
 								</li>
 							</ul>
@@ -34,8 +34,8 @@
 							<div class='drop_12'></div>
 							<h3>New Customers</h3>
 							<ul>
-								<li ng-repeat="customer in customers | orderBy:'created':reverse=true" >
-									{{customer.name}} joined the store ({{customer.created | date:'yyyy-MM-dd'}} - {{customer.elapsed}})
+								<li ng-repeat="customer in filtered = (customers | lastXDays:7) | orderBy:'created':reverse=true" >
+									{{customer.name}} joined the store ({{customer.elapsed}})
 								</li>
 							</ul>
 							<p class='text_center'><a href="#/customers">view all customers</a></p>
