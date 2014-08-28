@@ -9,13 +9,15 @@
 						</select>
 						<div class='clear'></div>
 						<label>Product</label>
-						<select ng-model="new_order.product_name" ng-change="selectProduct()"required>
+						<select ng-model="new_order.product_name" ng-change="selectProduct()" required>
 							<option value="">Please Select a Product</option>
 							<option ng-repeat="product in products | orderBy: 'name'" value="{{product.name}}">{{product.name}} ({{product.quantity}} available)</option>
 						</select>
 						<div class='clear'></div>
 						<label>Quantity</label>
-						<input type='number' id='qty' ng-disabled="!new_order.product_name" ng-model="new_order.quantity" required min=1 max step=1 />
+						<input type='number' id='qty' ng-disabled="!new_order.product_name" ng-if="product.name === new_order.product_name"  />
+						<input type='number' id='qty' 
+						ng-model="new_order.quantity" required min=1 max="{{product.quantity}}" ng-repeat="product in products" ng-if="product.name === new_order.product_name" step=1 placeholder='please enter a quantity' />
 						<button class="button add_button" ng-click="addOrder()">Place Order</button>
 					</div><!--end of div half-->
 					<div class="half">

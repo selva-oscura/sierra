@@ -69,6 +69,13 @@ label{
 	text-align: right;
 }
 
+input.ng-valid.ng-dirty {
+	background-color: #78FA89;
+}
+input.ng-invalid.ng-dirty {
+	background-color: #FA787E;
+}
+
 table{
 	border-collapse: collapse;
 	text-align: left;
